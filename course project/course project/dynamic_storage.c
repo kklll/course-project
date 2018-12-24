@@ -21,3 +21,78 @@ int function()
 
 
 */
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node			    //链表的结构定义
+{
+	char data;					//字符
+	int fru;					//权值
+	struct node *next;
+}node;
+void display(node *head)		//链表显示函数
+{
+	node *p;
+	p = head;
+	if (!p)
+		printf("此链表为空，无法输出\n");
+	else
+	{
+		printf("此链表各节点值为:\n");
+		while (p)
+		{
+			printf("%c", p->data);
+			printf("%5d", p->fru);
+			printf("\n");
+			p = p->next;
+		}
+		printf("\n");
+	}
+}
+node *creat()
+{
+	node *h = NULL, *q = NULL, *p = NULL;
+	int i=1;
+	/*printf("输入链表节点个数:\n");*/
+	FILE *fp = fopen("data.txt", "r");
+	if (fp)
+	{
+		printf("文件读取成功\n");
+	}
+	else
+	{
+		printf("文件读取失败\n");
+		exit(0);
+	}
+	h = (node *)malloc(sizeof(node));
+	fscanf(fp, "%c %d\n", &h->data, &h->fru);
+	p = (node *)malloc(sizeof(node));
+	fscanf(fp, "%c %d\n", &p->data, &p->fru);
+	h->next = p;
+	q = p;
+	while (1)
+	{
+		p = (node *)malloc(sizeof(node));
+		if (i == 1)
+		{
+			q->next = p;
+			i++;
+		}
+		if (fscanf(fp, "%c %d\n", &p->data, &p->fru) >= 0)
+		{
+			p->next = NULL;
+			q->next = p;
+			q = p;
+		}
+		else
+		{
+			break;
+		}
+	}
+	return h;
+}
+int main()
+{
+	node *h;
+	h = creat();
+	display(h);
+}
