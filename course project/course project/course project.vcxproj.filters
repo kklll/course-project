@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="dynamic_storage.c">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -30,10 +27,18 @@
     <ClCompile Include="static_storage.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt">
       <Filter>源文件</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

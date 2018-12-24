@@ -43,3 +43,14 @@
 此文件为程序主函数进行各函数的调用
 ---------------------------------------------------------------------------------
 */
+//#include <graphics.h>      // 引用图形库头文件
+//#include <conio.h>
+//#include"print.c"
+#include"dynamic_storage.c"
+
+int main()
+{
+	node *head=NULL;
+	head = creat();
+	display(head);
+}

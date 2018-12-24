@@ -19,11 +19,11 @@ int function()
 测试：
 将数据读入，正确输出就OK。
 
-
 */
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct node			    //链表的结构定义
+//#include"head.h"
+typedef struct 			    //链表的结构定义
 {
 	char data;					//字符
 	int fru;					//权值
@@ -48,11 +48,10 @@ void display(node *head)		//链表显示函数
 		printf("\n");
 	}
 }
-node *creat()
+node *creat()				//链表创建函数
 {
 	node *h = NULL, *q = NULL, *p = NULL;
 	int i=1;
-	/*printf("输入链表节点个数:\n");*/
 	FILE *fp = fopen("data.txt", "r");
 	if (fp)
 	{
@@ -63,13 +62,13 @@ node *creat()
 		printf("文件读取失败\n");
 		exit(0);
 	}
-	h = (node *)malloc(sizeof(node));
-	fscanf(fp, "%c %d\n", &h->data, &h->fru);
-	p = (node *)malloc(sizeof(node));
+	h = (node *)malloc(sizeof(node));			//头节点
+	fscanf(fp, "%c %d\n", &h->data, &h->fru);	//头节点赋值
+	p = (node *)malloc(sizeof(node));			
 	fscanf(fp, "%c %d\n", &p->data, &p->fru);
 	h->next = p;
 	q = p;
-	while (1)
+	while (1)					//链表
 	{
 		p = (node *)malloc(sizeof(node));
 		if (i == 1)
@@ -89,10 +88,4 @@ node *creat()
 		}
 	}
 	return h;
-}
-int main()
-{
-	node *h;
-	h = creat();
-	display(h);
 }

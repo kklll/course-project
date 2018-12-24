@@ -1,2 +1,10 @@
-﻿  dynamic_storage.c
-  course project.vcxproj -> C:\Users\DeepBlue\Desktop\git project\course-project\course project\Debug\course project.exe
+﻿  print.c
+c:\users\deepblue\desktop\git project\course-project\course project\course project\dynamic_storage.c(46): warning C4133: “=”: 从“node *”到“node *”的类型不兼容
+c:\users\deepblue\desktop\git project\course-project\course project\course project\dynamic_storage.c(69): warning C4133: “=”: 从“node *”到“node *”的类型不兼容
+c:\users\deepblue\desktop\git project\course-project\course project\course project\dynamic_storage.c(76): warning C4133: “=”: 从“node *”到“node *”的类型不兼容
+c:\users\deepblue\desktop\git project\course-project\course project\course project\dynamic_storage.c(82): warning C4133: “=”: 从“node *”到“node *”的类型不兼容
+main.obj : error LNK2005: _creat 已经在 dynamic_storage.obj 中定义
+main.obj : error LNK2005: _display 已经在 dynamic_storage.obj 中定义
+print.obj : error LNK2005: _creat 已经在 dynamic_storage.obj 中定义
+print.obj : error LNK2005: _display 已经在 dynamic_storage.obj 中定义
+C:\Users\DeepBlue\Desktop\git project\course-project\course project\Debug\course project.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
