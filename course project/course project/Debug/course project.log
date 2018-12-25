@@ -1,9 +1,2 @@
-﻿  decode.c
-c:\users\deepblue\desktop\git project\course-project\course project\course project\decode.c(9): warning C4013: “gets”未定义；假设外部返回 int
-  encode.c
-c:\users\deepblue\desktop\git project\course-project\course project\course project\encode.c(66): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-c:\users\deepblue\desktop\git project\course-project\course project\course project\encode.c(53): warning C4101: “f”: 未引用的局部变量
-c:\users\deepblue\desktop\git project\course-project\course project\course project\encode.c(52): warning C4101: “count”: 未引用的局部变量
-c:\users\deepblue\desktop\git project\course-project\course project\course project\encode.c(54): warning C4101: “c”: 未引用的局部变量
-  正在生成代码...
+﻿  main.c
   course project.vcxproj -> C:\Users\DeepBlue\Desktop\git project\course-project\course project\Debug\course project.exe

@@ -2,6 +2,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<Windows.h>
 #define n 100				 //叶子最大数目
 #define m (2*n-1)			//最大结点总数(2*n-1)
 #define maxval 10000.0
