@@ -15,19 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dynamic_storage.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="encode.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="print.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="static_storage.c">
+    <ClCompile Include="main.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="decode.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -37,7 +34,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="head.h">
+    <ClInclude Include="storage.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

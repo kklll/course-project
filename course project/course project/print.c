@@ -16,38 +16,4 @@ int function()
 此文件用来进行编码输出
 ---------------------------------------------------------------------------------
 */
-#include"dynamic_storage.c"
-//int  functionbianma(node *head )/*定义编码函数*/
-//{
-//	int code[10];
-//	int n;
-//	if (head)
-//	{
-//		if (head->lchid == NULL && head->rchild == NULL)
-//			printf("id为%c权值为%d的叶子节点的哈夫曼编码为：",head->data, head->fru);
-//		int i;
-//		for (i = 0; i <= n; i++)
-//		{
-//			printf("%d", code[i]);
-//		}
-//		printf("\n");
-//	}
-//	else
-//	{
-//		code[n] = 0;
-//		functionbianma(head->lchild, n + 1);
-//		code[n] = 1;
-//		functionbianma(head->rchild, n + 1);
-//
-//	}
-//}
-//int display(node *head)
-//{
-//	if (head)
-//	{
-//		display(head->lchild);
-//		printf("id为%c的叶子节点的权值为%d",head->data, head->fru);
-//		display(head->rchild);
-//
-//	}
-//}
+
