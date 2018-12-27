@@ -119,16 +119,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="decode.c" />
-    <ClCompile Include="encode.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="print.c" />
+    <ClCompile Include="decode.cpp" />
+    <ClCompile Include="encode.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="print.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="storage.h" />
+    <ClInclude Include="head.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

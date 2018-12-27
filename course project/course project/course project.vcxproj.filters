@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="encode.c">
+    <ClCompile Include="print.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="print.c">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="encode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="decode.c">
+    <ClCompile Include="decode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,7 +34,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="storage.h">
+    <ClInclude Include="head.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

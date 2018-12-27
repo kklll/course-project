@@ -49,62 +49,45 @@
 
 //#include <graphics.h>      // 引用图形库头文件
 //#include <conio.h>
-#include"storage.h"
+#include"head.h"
 int main()
 {
-	int i, j, cou, x, d;
-	int new_m, new_n;
-	
-	cou = count();
-	new_n = cou;			//存在数组开辟空间不能动态的解决方法
-	new_m = 2 * cou - 1;
-	//定义真正的使用量。
+	hufnode a[100], *p,*root;
+	int count;
+	int x,d;
 	do
 	{
 		system("color 2");
-	
 		printf("*********************************菜单*********************************\n");
 		printf("***************************哈夫曼编码---请按2*************************\n");
 		printf("***************************显示哈夫曼树-请按3*************************\n");
 		printf("***************************哈夫曼译码---请按4*************************\n");
-
+		printf("**********************请输入功能序号(回车进行选择)********************\n");
 		scanf("%d", &x);
-
-		hufmtree tree[m];
-		codetype code[n];
 		if (x == 2)
 		{
-			huffman(tree, new_m, new_n);//建立哈夫曼树
-			huffmancode(code, tree, new_m, new_n);
-			printf("每个字符的哈夫曼编码分别为:\n");
-			for (i = 0; i < new_n; i++)
+			count = readdata(a);
+			QuickSort(a, 0, count - 1);
+			p = tolink(a, count);
+			/*while (p)
 			{
-				printf("%c: ", code[i].ch);
-				for (j = code[i].start; j < new_n; j++)
-					printf("%c ", code[i].bits[j]);
-				printf("\n");
-			}
+				printf("%c %d\n", p->info, p->data);
+				p = p->next;
+			}*/
+			root=creathuff(p);
+			inorder(root);
 		}//根据哈夫曼树求出哈夫曼编码
 
 		if (x == 3)
 		{
 			system("color 3");
+			ppt();
 		}
 		if (x == 4)
 		{
 			system("color 5");
-			printf("【读入，并进行译码】\n");
-			getchar();
-			printf("每个字符的哈夫曼编码分别为:\n");
-			for (i = 0; i < new_n; i++)
-			{
-				printf("%c: ", code[i].ch);
-				for (j = code[i].start; j < new_n; j++)
-					printf("%c ", code[i].bits[j]);
-				printf("\n");
-			}
-			decode(tree, new_m);
-		}//依次读入电文，根据哈夫曼树译码
+			
+		}//依次读入，译码
 		system("color 4");
 		printf("继续操作请按1，退出请按-1\n");
 		scanf("%d", &d);
