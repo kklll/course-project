@@ -67,15 +67,14 @@ int main()
 		if (x == 2)
 		{
 			count = readdata(a);
-			QuickSort(a, 0, count - 1);
-			p = tolink(a, count);
-			/*while (p)
+			QuickSort(a, 0, count-1);
+			/*for (int i = 0; i <= 26; i++)
 			{
-				printf("%c %d\n", p->info, p->data);
-				p = p->next;
+				printf("%c %d\n", a[i].info, a[i].data);
 			}*/
+			p = tolink(a, count);
 			root=creathuff(p);
-			inorder(root);
+			treeencode(root);
 		}//根据哈夫曼树求出哈夫曼编码
 
 		if (x == 3)

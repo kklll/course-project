@@ -94,7 +94,7 @@ void QuickSort(hufnode y[], int left, int right)				//将结构体数组快速排序
 				j--;
 			if (i < j)
 				y[i++] = y[j];
-			while (i < j&&x.data > y[j].data)
+			while (i < j&&x.data > y[i].data)
 				i++;
 			if (i < j)
 				y[j--] = y[i];
@@ -127,13 +127,64 @@ hufnode *tolink(hufnode a[], int count)				//将排序后的数组元素用链表连起来
 	}
 	return h;
 }
-void inorder(hufnode *t)					//中序遍历递归算法
+
+void treeencode(hufnode *t)
 {
-	if (t)
+	stack s;
+	queue q;
+	q.front = 0;
+	q.rear = 0;
+	int flag=0;
+	int i = 0;
+	init(&s);
+	while (t != NULL || s.top != 0)
 	{
-		inorder(t->lchild);
-		if(t->info!=NULL)
-		printf("%c\n", t->info);
-		inorder(t->rchild);
+		if (t)
+		{
+			push(&s, *t);
+			if (t->lchild == NULL && t->rchild == NULL)
+			{
+				for (i = 0; i < q.rear; i++)
+				{
+					t->encode[i] = q.data[i];
+				}
+				t->encode[i] = 2;
+				if (t->info != NULL)
+				{
+					printf("%c ", t->info);
+					for (i = 0; t->encode[i] != 2; i++)
+					{
+						printf("%d", t->encode[i]);
+					}
+				}
+				printf("\n");
+			}
+			if (flag == 0 )
+				q.data[q.rear++] = 0;
+			if (flag == 1 )
+				q.data[q.rear++] = 1;
+			t = t->lchild;
+			flag = 0;
+		}
+		else 
+		{
+			t = pop(&s);
+			q.rear--;
+			t = t->rchild;
+			flag = 1;
+		}
 	}
+}
+void init(stack *s)
+{
+	s->top = 0;
+}
+void push(stack *s, hufnode a)
+{
+	s->data[s->top++] = a;
+}
+hufnode *pop(stack *s)
+{
+	s->top--;
+	return(&s->data[s->top]);
 }
