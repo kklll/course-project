@@ -18,16 +18,42 @@ int function()
 */
 
 #include"head.h"
-void  ppt()
+void  draw_main(hufnode *s)
 {
-	initgraph(1152, 786);   // 创建绘图窗口，大小为 640x480 像素SHOWCONSOLE
+	initgraph(1920, 1080);   // 创建绘图窗口，大小为 640x480 像素SHOWCONSOLE
 	setbkcolor(WHITE);				// 设置背景色为蓝色
 	cleardevice();					//填充
 	setcolor(RED);
-	circle(576, 25, 25); // 画圆，圆心(576,25)，半径 25
+	drawdemo(s,960,0);
+	//circle(576, 25, 25); // 画圆，圆心(576,25)，半径 25
 	_getch();              // 按任意键继续
 	closegraph();          // 关闭绘图窗口
+
 }
+
+void dr(int x, int y, char c)
+{
+	circle(x, y, 20); Sleep(100);//画圈并暂停100ms
+	outtextxy(x - 5, y - 5, c);   //输出元素
+}
+void drawdemo(hufnode *s, int x, int y)
+{
+	int suojian = 0.2;
+	int temp = 5;
+	if (s != NULL)
+		dr(x, y, s->data);
+	if (s->lchild != NULL) {
+		//suojian++;//缩减值自增1
+		line(x - 14, y + 14, x - temp / suojian, y + 100 - 20); Sleep(100);//画线并暂停100ms
+		drawdemo(s->lchild, x - temp / suojian, y + 100);//递归调用左子树
+	}
+	if (s->rchild != NULL) {
+		//suojian++;//缩减值自增1
+		line(x + 14, y + 14, x + temp / suojian, y + 100 - 20); Sleep(100);//画线并暂停100ms
+		drawdemo(s->rchild, x + temp / suojian, y + 100);//递归调用右子树
+	}
+	suojian--;
+}//画树的递归算法
 
 /*
 #include <stdio.h>
@@ -221,4 +247,4 @@ void button2(MOUSEMSG m, int x1, int y1, int x2, int y2) {
 	temp = 200;
 	t = getree(t, str);
 }
-*/                                                //这部分功能暂时未做
+*/

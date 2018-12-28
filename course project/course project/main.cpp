@@ -55,6 +55,18 @@ int main()
 	hufnode a[100], *p,*root;
 	int count;
 	int x,d;
+	count = readdata(a);
+	QuickSort(a, 0, count - 1);
+	/*for (int i = 0; i <= 26; i++)
+	{
+		printf("%c %d\n", a[i].info, a[i].data);
+	}*/
+	p = tolink(a, count);
+	root = creathuff(p);
+	/*for (int i = 0; i <= 26; i++)
+	{
+		printf("%c %d\n", a[i].info, a[i].data);
+	}*/
 	do
 	{
 		system("color 2");
@@ -66,26 +78,19 @@ int main()
 		scanf("%d", &x);
 		if (x == 2)
 		{
-			count = readdata(a);
-			QuickSort(a, 0, count-1);
-			/*for (int i = 0; i <= 26; i++)
-			{
-				printf("%c %d\n", a[i].info, a[i].data);
-			}*/
-			p = tolink(a, count);
-			root=creathuff(p);
-			treeencode(root);
+			treeencode(root,p,count);
 		}//根据哈夫曼树求出哈夫曼编码
 
 		if (x == 3)
 		{
 			system("color 3");
-			ppt();
+			draw_main(root);
 		}
 		if (x == 4)
 		{
+			treeencode(root, p, count);
+			decode(root);
 			system("color 5");
-			
 		}//依次读入，译码
 		system("color 4");
 		printf("继续操作请按1，退出请按-1\n");

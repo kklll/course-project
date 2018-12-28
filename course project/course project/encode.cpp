@@ -37,19 +37,23 @@ hufnode *insert(hufnode * root, hufnode *s)					//取两最小节点将节点插入
 }
 hufnode *creathuff(hufnode * root)								// 生成哈夫曼树的创建函数
 {
-	hufnode *s, *rl, *rr;
+	hufnode *s, *rl, *rr,*root1;
+	root1 = root;
 	while (root&&root->next)
 	{
 		rl = root;
 		rr = root->next;
 		root = rr->next;
 		s = (hufnode *)malloc(sizeof(hufnode));
+		s->parent = NULL;
+		rl->parent = s;
+		rr->parent = s;
 		s->info = NULL;
 		s->next = NULL;
 		s->data = rl->data + rr->data;
 		s->lchild = rl;
 		s->rchild = rr;
-		rl->next = rr->next = NULL;
+		//rl->next = rr->next = NULL;
 		root = insert(root, s);						//通过多次插入实现
 	}
 	printf("创建完成！\n");
@@ -128,63 +132,58 @@ hufnode *tolink(hufnode a[], int count)				//将排序后的数组元素用链表连起来
 	return h;
 }
 
-void treeencode(hufnode *t)
+void treeencode(hufnode *t,hufnode *h,int count)
 {
+	int i = 0,j;
+	hufnode *p,*q,*tmp;
 	stack s;
-	queue q;
-	q.front = 0;
-	q.rear = 0;
-	int flag=0;
-	int i = 0;
 	init(&s);
-	while (t != NULL || s.top != 0)
+	p = h;
+	q = h;
+	while(p!=NULL)
 	{
-		if (t)
+		q = p;
+		while (q!=t)
 		{
-			push(&s, *t);
-			if (t->lchild == NULL && t->rchild == NULL)
+			tmp = q;
+			q = q->parent;
+			if (q->lchild == tmp)
 			{
-				for (i = 0; i < q.rear; i++)
-				{
-					t->encode[i] = q.data[i];
-				}
-				t->encode[i] = 2;
-				if (t->info != NULL)
-				{
-					printf("%c ", t->info);
-					for (i = 0; t->encode[i] != 2; i++)
-					{
-						printf("%d", t->encode[i]);
-					}
-				}
-				printf("\n");
+				push(&s, 0);
 			}
-			if (flag == 0 )
-				q.data[q.rear++] = 0;
-			if (flag == 1 )
-				q.data[q.rear++] = 1;
-			t = t->lchild;
-			flag = 0;
+			if (q->rchild == tmp)
+			{
+				push(&s, 1);
+			}
 		}
-		else 
+		j = 0;
+		for (j = 0; s.top > 0; j++)
 		{
-			t = pop(&s);
-			q.rear--;
-			t = t->rchild;
-			flag = 1;
+			p->encode[j] = pop(&s);
 		}
+		p->encode[j] = 2;
+		if (p->info != NULL)
+		{
+			printf("%c ", p->info);
+			for (j = 0; p->encode[j] != 2; j++)
+			{
+				printf("%d", p->encode[j]);
+			}
+			printf("\n");
+		}
+		p = p->next;
 	}
 }
 void init(stack *s)
 {
 	s->top = 0;
 }
-void push(stack *s, hufnode a)
+void push(stack *s, int a)
 {
 	s->data[s->top++] = a;
 }
-hufnode *pop(stack *s)
+int pop(stack *s)
 {
 	s->top--;
-	return(&s->data[s->top]);
+	return(s->data[s->top]);
 }
