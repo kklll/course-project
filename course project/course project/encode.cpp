@@ -1,19 +1,12 @@
 /*
-直接写函数比如:
-int function()
-{
-	int s;
-	scanf(%d,&s);
-	return s;
-}
-1、因为最终要在main函数中调用各个函数，所以大家不要写重名函数自己调试的时候写main函数发给我的时侯只要函数，剩下的什么都不要
-只把自己那块的函数代码写好就ok。
-2、勤写注释，最好每行都有注释，写明白每行代码是用来干什么的，每个变量的意义是什么。
-3、及时交流，上完一次机交流一下自己写到哪个部分了。
+---------------------------------------------------------------------------------
+此文件为程序进行哈夫曼编码主文件
+---------------------------------------------------------------------------------
 */
 
+
 #include"head.h"
-hufnode *insert(hufnode * root, hufnode *s)					//取两最小节点将节点插入
+hufnode *insert(hufnode * root, hufnode *s)					//取两最小节点创建树
 {
 	hufnode *p1, *p2;
 	if (root == NULL)
@@ -54,7 +47,7 @@ hufnode *creathuff(hufnode * root)								// 生成哈夫曼树的创建函数
 		s->lchild = rl;
 		s->rchild = rr;
 		//rl->next = rr->next = NULL;
-		root = insert(root, s);						//通过多次插入实现
+		root = insert(root, s);					
 	}
 	printf("创建完成！\n");
 	return root;
@@ -104,11 +97,11 @@ void QuickSort(hufnode y[], int left, int right)				//将结构体数组快速排序
 				y[j--] = y[i];
 		}
 		y[i] = x;
-		QuickSort(y, left, i - 1);		//递归实现方法 
-		QuickSort(y, i + 1, right);
+		QuickSort(y, left, i - 1);		//递归实现
+		QuickSort(y, i + 1, right);		//递归实现
 	}
 }
-hufnode *tolink(hufnode a[], int count)				//将排序后的数组元素用链表连起来
+hufnode *tolink(hufnode a[], int count)				//将排序后的数组元素用链表连起来形成有序链表
 {
 	node *h = NULL, *q = NULL, *p = NULL;
 	int  i;
@@ -174,15 +167,15 @@ void treeencode(hufnode *t,hufnode *h,int count)
 		p = p->next;
 	}
 }
-void init(stack *s)
+void init(stack *s)					//栈的初始化具体化实现
 {
 	s->top = 0;
 }
-void push(stack *s, int a)
+void push(stack *s, int a)				//压栈具体化实现
 {
 	s->data[s->top++] = a;
 }
-int pop(stack *s)
+int pop(stack *s)					//弹栈具体化实现
 {
 	s->top--;
 	return(s->data[s->top]);

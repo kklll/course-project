@@ -1,58 +1,53 @@
 /*
-直接写函数比如:
-int function()
-{
-	int s;
-	scanf(%d,&s);
-	return s;
-}
-1、因为最终要在main函数中调用各个函数，所以大家不要写重名函数自己调试的时候写main函数发给我的时侯只要函数，剩下的什么都不要
-只把自己那块的函数代码写好就ok。
-2、勤写注释，最好每行都有注释，写明白每行代码是用来干什么的，每个变量的意义是什么。
-3、及时交流，上完一次机交流一下自己写到哪个部分了。
-4、遇到不会的问题及时交流，希望大家做一次就做到最好。
+
 
 ---------------------------------------------------------------------------------
-此文件用来进行编码输出
+此文件用来进行编码图形化界面输出
 ---------------------------------------------------------------------------------
+
 */
 
-#include"head.h"
+#include"head.h"					//引入总头文件
 void  draw_main(hufnode *s)
 {
-	initgraph(1920, 1080);   // 创建绘图窗口，大小为 640x480 像素SHOWCONSOLE
-	setbkcolor(WHITE);				// 设置背景色为蓝色
-	cleardevice();					//填充
+	int tmp = 100;
+	int suojian = 1;
+	initgraph(1920, 1080);			// 创建绘图窗口，SHOWCONSOLE
+	setbkcolor(WHITE);				// 设置背景填充颜色
+	cleardevice();					//进行填充
 	setcolor(RED);
-	drawdemo(s,960,0);
-	//circle(576, 25, 25); // 画圆，圆心(576,25)，半径 25
-	_getch();              // 按任意键继续
-	closegraph();          // 关闭绘图窗口
+	drawdemo(s,860,20);				//递归调用画树的子文件
+	_getch();						 // 检测键盘输入时间。
+	closegraph();					 // 关闭绘图窗口
 
 }
+int temp = 1000;
+int suojian = 4;
 
-void dr(int x, int y, char c)
+void draw(int x, int y, char c) 
 {
 	circle(x, y, 20); Sleep(100);//画圈并暂停100ms
 	outtextxy(x - 5, y - 5, c);   //输出元素
 }
-void drawdemo(hufnode *s, int x, int y)
+
+
+void drawdemo(hufnode *s, int x, int y) 
 {
-	int suojian = 0.2;
-	int temp = 5;
 	if (s != NULL)
-		dr(x, y, s->data);
-	if (s->lchild != NULL) {
-		//suojian++;//缩减值自增1
-		line(x - 14, y + 14, x - temp / suojian, y + 100 - 20); Sleep(100);//画线并暂停100ms
-		drawdemo(s->lchild, x - temp / suojian, y + 100);//递归调用左子树
+		draw(x, y, s->info);
+	if (s->lchild != NULL) 
+	{
+		suojian+=4;//缩减值自增
+		line(x - 14, y + 14, x - temp / suojian, y + 50 - 20); Sleep(100);//画线并暂停100ms
+		drawdemo(s->lchild, x - temp / suojian, y + 50);//递归调用左子树
 	}
-	if (s->rchild != NULL) {
-		//suojian++;//缩减值自增1
-		line(x + 14, y + 14, x + temp / suojian, y + 100 - 20); Sleep(100);//画线并暂停100ms
-		drawdemo(s->rchild, x + temp / suojian, y + 100);//递归调用右子树
+	if (s->rchild != NULL) 
+	{
+		suojian+=4;//缩减值自增
+		line(x + 14, y + 14, x + temp / suojian, y + 50 - 20); Sleep(100);//画线并暂停100ms
+		drawdemo(s->rchild, x + temp / suojian, y + 50);//递归调用右子树
 	}
-	suojian--;
+	suojian-=4;
 }//画树的递归算法
 
 /*

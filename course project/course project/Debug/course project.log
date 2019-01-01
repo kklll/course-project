@@ -1,3 +1,1 @@
-﻿  print.cpp
-c:\users\deepblue\desktop\git project\course-project\course project\course project\print.cpp(41): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-  course project.vcxproj -> C:\Users\DeepBlue\Desktop\git project\course-project\course project\Debug\course project.exe
+﻿  course project.vcxproj -> C:\Users\DeepBlue\Desktop\git project\course-project\course project\Debug\course project.exe

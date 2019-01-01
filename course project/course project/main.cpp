@@ -47,26 +47,44 @@
 */
 
 
-//#include <graphics.h>      // 引用图形库头文件
-//#include <conio.h>
+/*
+本程序的图形化界面使用Easyx实现，下载地址：https://www.easyx.cn/
+数据读入格式为：（字符+空格+换行（\n））
+例如：
+A 64
+B 13
+C 22
+D 32
+数据个数不需要指定，程序自动判断。
+*/
+
 #include"head.h"
 int main()
 {
-	hufnode a[100], *p,*root;
-	int count;
+	hufnode a[100], *p,*root;			//定义储存变量
+	int count;							//count用来存放总数据个数
 	int x,d;
-	count = readdata(a);
-	QuickSort(a, 0, count - 1);
-	/*for (int i = 0; i <= 26; i++)
+	count = readdata(a);				//调用函数得到个数，确保下面函数的正确运行
+	QuickSort(a, 0, count - 1);			//通过将data域的判断来进行快速排序
+
+
+	/*for (int i = 0; i <= 26; i++)					//测试用例
 	{
 		printf("%c %d\n", a[i].info, a[i].data);
 	}*/
-	p = tolink(a, count);
-	root = creathuff(p);
-	/*for (int i = 0; i <= 26; i++)
+
+
+	p = tolink(a, count);				//通过此函数将上面数组定义的结构体连接成有序链表
+	root = creathuff(p);				//创建哈夫曼树，root保存树的顶点元素。
+
+
+
+	/*for (int i = 0; i <= 26; i++)				//测试用例
 	{
 		printf("%c %d\n", a[i].info, a[i].data);
 	}*/
+
+	//菜单选项
 	do
 	{
 		system("color 2");
@@ -78,20 +96,21 @@ int main()
 		scanf("%d", &x);
 		if (x == 2)
 		{
-			treeencode(root,p,count);
+			treeencode(root,p,count);			//哈夫曼编码主函数
 		}//根据哈夫曼树求出哈夫曼编码
 
 		if (x == 3)
 		{
 			system("color 3");
-			draw_main(root);
+			draw_main(root);					//调用图形化主函数
+			system("pause");
 		}
 		if (x == 4)
 		{
-			treeencode(root, p, count);
+			treeencode(root, p, count);			//哈夫曼解码主函数。
 			decode(root);
 			system("color 5");
-		}//依次读入，译码
+		}
 		system("color 4");
 		printf("继续操作请按1，退出请按-1\n");
 		scanf("%d", &d);
